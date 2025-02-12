@@ -32,7 +32,7 @@ github:
   #username: twitter_username # change to your Twitter username
 
 #linkedin:
-#  username: https://www.linkedin.com/in/rene-bui-5815611b1/
+##  username: https://www.linkedin.com/in/rene-bui-5815611b1/
 
 social:
   # Change to your full name.
