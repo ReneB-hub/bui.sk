@@ -1,19 +1,22 @@
 ---
-title: My First Post
-description: This is what future posts will look like
-categories: [linux, windows, privilege escalation]
-tags: [tryhackme, hackthebox, windows, linux, active directory, web]     # TAG names should always be lowercase
+title: TryHackMe - IDOR
 author: rene
+description: #
+categories: [TryHackMe]
+tags: [web]     # TAG names should always be lowercase
+render_with_liquid: false
+img_path: /images/tryhackme_idor/
+image:
+    path: room_image.png
 ---
-# Welcome to My Blog!
+## What is an IDOR?
+Learn how to find and exploit IDOR vulnerabilities in a web application giving you access to data that you shouldn't have.
 
-Hello, world! This is my very first post on my Jekyll-powered blog. 🎉
+[![Tryhackme Room Link](room_image.png){: width="300" height="300" .shadow}](https://tryhackme.com/room/idor){: .center } 
 
-This is just a simple test post to get started, and I'm excited to share more in the future. My upcoming posts will be about various topics, ranging from technology and development to personal projects and anything else I find interesting.
+IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability
 
-Stay tuned for more! In the meantime, feel free to explore the site, check out the themes, and let me know your thoughts.
-
-Thanks for visiting, and I hope you enjoy reading my posts. ✌️
+This type of vulnerability can occur when a web server receives user-supplied input to retrieve objects (files, data, documents), too much trust has been placed on the input data and it is not validated on the server-side to confirm the requested object belongs to the user requesting it.
 
 ---
 
