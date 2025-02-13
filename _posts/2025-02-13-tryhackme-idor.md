@@ -9,7 +9,7 @@ image:
     path: /images/tryhackme_idor/room_image.png
 ---
 Learn how to find and exploit IDOR vulnerabilities in a web application giving you access to data that you shouldn't have.
-[![Tryhackme Room Link](room_card.png){: width="300" height="300" .shadow}](https://tryhackme.com/room/idor){: .center } 
+[![Tryhackme Room Link](/images/tryhackme_idor/room_card.png){: width="300" height="300" .shadow}](https://tryhackme.com/room/idor){: .center } 
 
 
 
@@ -33,16 +33,16 @@ We can see the 4 e-mails
 
 Let's find out which one we can use this vulnerability for:
 
-![IDOR Example](example.png){: width="600" height="450" .shadow}
+![IDOR Example](/images/tryhackme_idor/example.png){: width="600" height="450" .shadow}
 
 
 Try changing the order number to 1000:
 
-![IDOR Example 2](example2.png){: width="600" height="450" .shadow}
+![IDOR Example 2](/images/tryhackme_idor/example2.png){: width="600" height="450" .shadow}
 
 And we receive the flag:
 
-![IDOR Example 3](example3.png){: width="600" height="450" .shadow}
+![IDOR Example 3](/images/tryhackme_idor/example3.png){: width="600" height="450" .shadow}
 
 Question:
 
@@ -107,34 +107,49 @@ No answer needed
 
 ## A Practical IDOR Example
 
-Begin by pressing the Start Machine button; once started, click the below link and open it in a new browser tab:
+Begin by pressing the Start Machine button; once started, visit the website in a new browser tab:
 
-`https://LAB_WEB_URL.p.thmlabs.com`
+`https://WEBSITE_IP.p.thmlabs.com`
 
 Firstly you'll need to log in. To do this, click on the customer's section and create an account. Once logged in, click on the Your Account tab. 
 
 The Your Account section gives you the ability to change your information such as username, email address and password. You'll notice the username and email fields pre-filled in with your information.  
 
+![Practice 1](/images/tryhackme_idor/practice1.png){: width="800" height="550" .shadow}
+
 We'll start by investigating how this information gets pre-filled. If you open your browser developer tools, select the network tab and then refresh the page, you'll see a call to an endpoint with the path `/api/v1/customer?id={user_id}`
 
 This page returns in JSON format your user id, username and email address. We can see from the path that the user information shown is taken from the query string's id parameter.
 
+Let's try to update our username to something else and click update:
 
-IMAGE FOR ANSWER 1 WILL COME HERE
+![Practice 2](/images/tryhackme_idor/practice2.png){: width="800" height="550" .shadow}
+
+We can do a right click and select Edit and Resend:
+
+![Practice 3](/images/tryhackme_idor/practice3.png){: width="800" height="550" .shadow}
+
+Change the ID to `1` and click `Send`
+
+![Practice 4](/images/tryhackme_idor/practice4.png){: width="800" height="550" .shadow}
+
+We can see that ID has now changed and we can see the user:
+
+![Practice 5](/images/tryhackme_idor/practice5.png){: width="800" height="550" .shadow}
+
 
 ##### Answer:
 ```
-WE DONT KNOW YET
+adam84
 ```
 
+Now we do the same for the ID 3:
 
-
-
-IMAGE FOR ANSWER 2 WILL COME HERE
+![Practice 6](/images/tryhackme_idor/practice6.png){: width="800" height="550" .shadow}
 
 ##### Answer:
 ```
-WE DONT KNOW YET
+j@fakemail.thm
 ```
 
 
