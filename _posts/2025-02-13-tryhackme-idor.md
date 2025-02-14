@@ -9,7 +9,7 @@ image:
     path: /images/tryhackme_idor/room_image.png
 ---
 Learn how to find and exploit IDOR vulnerabilities in a web application giving you access to data that you shouldn't have.
-[![Tryhackme Room Link](/images/tryhackme_idor/room_card.png){: width="300" height="300" .shadow}](https://tryhackme.com/room/idor){: .center } 
+[![Tryhackme Room Link](/images/tryhackme_idor/room_card.png){: width="300" height="300" .shadow}](https://tryhackme.com/room/idor){: .center }
 
 
 
