@@ -1,7 +1,7 @@
 ---
 title: TryHackMe - The Sticker Shop
 author: rene
-description: #
+description: A simple walkthrough on using ❌ Cross-Site Scripting for this challenge #
 categories: [TryHackMe]
 tags: [web, xss]     # TAG names should always be lowercase
 render_with_liquid: false
@@ -52,7 +52,7 @@ And Submit our script
 </textarea><script>fetch('http://10.11.75.122:8000');</script>
 ```
 
-We've got a response
+We've got a response meaning we have a Blind XSS vulnerability
 
 ![Submit Page](/images/tryhackme_the_sticker_shop/xss_to_myself.png){: width="600" height="450" .shadow}
 

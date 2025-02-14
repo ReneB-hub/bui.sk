@@ -1,7 +1,7 @@
 ---
 title: TryHackMe - IDOR
 author: rene
-description: #
+description: 🔑 Learn how to find and exploit IDOR vulnerabilities in a web application #
 categories: [TryHackMe]
 tags: [web]     # TAG names should always be lowercase
 render_with_liquid: false
