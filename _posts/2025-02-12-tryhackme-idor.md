@@ -1,6 +1,7 @@
 ---
 title: TryHackMe - IDOR
 author: rene
+date: 2025-02-12 18:44:44 +0100
 description: 🔑 Learn how to find and exploit IDOR vulnerabilities in a web application #
 categories: [TryHackMe]
 tags: [web]     # TAG names should always be lowercase
@@ -10,7 +11,6 @@ image:
 ---
 Learn how to find and exploit IDOR vulnerabilities in a web application giving you access to data that you shouldn't have.
 [![Tryhackme Room Link](/images/tryhackme_idor/room_card.png){: width="300" height="300" .shadow}](https://tryhackme.com/room/idor){: .center }
-
 
 
 ## What is an IDOR?

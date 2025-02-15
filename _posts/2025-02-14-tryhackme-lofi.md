@@ -1,17 +1,21 @@
 ---
 title: TryHackMe - Lo-Fi
 author: rene
-description: A basic guide to exploiting 🗂️ Local File Inclusion and Path Traversal vulnerabilities in this challenge. #
+date: 2025-02-14 20:13:44 +0100
+description: A basic guide to exploiting 🗂️ Local File Inclusion and Path Traversal vulnerabilities in this challenge #
 categories: [TryHackMe]
 tags: [web, local file inclusion, path traversal]     # TAG names should always be lowercase
 render_with_liquid: false
 image:
     path: /images/tryhackme_lofi/room_image.png
 ---
+### Intro
 
 This should be simple LFI / Path Traversal vulnerability practice challenge.
 
 [![Tryhackme Room Link](/images/tryhackme_lofi/room_card.png){: width="300" height="300" .shadow}](https://tryhackme.com/room/lofi){: .center }
+
+### Nmap
 
 Let's start with nmap scan
 
@@ -31,6 +35,8 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 `80/tcp` port open, let's visit the website
 
+### Path Traversal
+
 Let's start by Path Traversal
 ```
 http://10.10.72.5/?page=/../../../flag.txt
@@ -45,7 +51,7 @@ Let's try this parameter against some wordlist using `ffuf`
 ffuf -w /usr/share/wordlists/LFI-Jhaddix.txt -u "http://10.10.72.5/?page=FUZZ" -fl 124
 ```
 
-### Breakdown:
+#### Breakdown:
 
 - `-w /usr/share/wordlists/LFI-Jhaddix.txt` → Uses a wordlist containing common LFI payloads.
 - `-u "http://10.10.72.5/?page=FUZZ"` → Replaces `FUZZ` in the URL with each word from the wordlist.
@@ -60,6 +66,8 @@ Let's try a few of the simplest ones using /etc/passwd file
 Success
 
 ![Traversal Path](/images/tryhackme_lofi/traversal.png){: width="600" height="450" .shadow}
+
+## Flag
 
 Now let's try it using flag.txt file
 

